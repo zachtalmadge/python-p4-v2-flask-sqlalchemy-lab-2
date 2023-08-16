@@ -23,7 +23,7 @@ class Customer(db.Model, SerializerMixin):
 
     # Association proxy to get items for this customer through reviews
     items = association_proxy('reviews', 'item',
-                              creator=lambda item: Item(item=item))
+                              creator=lambda item_obj: Review(item=item_obj))
 
     def __repr__(self):
         return f'<Customer {self.id}, {self.name}>'
